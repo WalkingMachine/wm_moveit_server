@@ -1,0 +1,6 @@
+#pose list
+string move_group
+agile_grasp/Grasp[] grasps
+---
+#result
+bool success

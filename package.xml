@@ -1,0 +1,39 @@
+<package>
+
+  <name>wm_moveit_server</name>
+  <version>0.3.0</version>
+  <description>
+    server package to allow basic interactions with moveit
+  </description>
+  <author email="philippe117@live.fr">Philippe La Madeleine</author>
+  <maintainer email="philippe117@live.fr">Philippe La Madeleine</maintainer>
+
+  <license>BSD</license>
+
+  <url type="website">http://moveit.ros.org/</url>
+  <url type="bugtracker">https://github.com/ros-planning/moveit/issues</url>
+  <url type="repository">https://github.com/ros-planning/moveit</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <run_depend>moveit_ros_move_group</run_depend>
+  <build_depend>moveit_ros_move_group</build_depend>
+  <build_depend>roscpp</build_depend>
+  <run_depend>roscpp</run_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <run_depend>geometry_msgs</run_depend>
+  <build_depend>message_generation</build_depend>
+  <run_depend>message_runtime</run_depend>
+  <build_depend>std_srvs</build_depend>
+  <run_depend>std_srvs</run_depend>
+  <build_depend>std_msgs</build_depend>
+  <run_depend>std_msgs</run_depend>
+  <build_depend>tf</build_depend>
+  <build_depend>tf_conversions</build_depend>
+  <build_depend>eigen_conversions</build_depend>
+  <run_depend>tf</run_depend>
+  <run_depend>tf_conversions</run_depend>
+  <run_depend>eigen_conversions</run_depend>
+
+
+</package>

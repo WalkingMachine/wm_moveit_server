@@ -1,0 +1,6 @@
+#pose list
+string move_group
+geometry_msgs/Pose pose
+---
+#result
+bool success
