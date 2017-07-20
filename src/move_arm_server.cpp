@@ -2,7 +2,7 @@
 //// Created by philippe on 02/07/17.
 ////
 
-#include <wm_moveit_server/move_arm_server.h>
+#include <move_arm_server.h>
 #include <agile_grasp/Grasps.h>
 #include <Eigen/Dense>
 #include <eigen_conversions/eigen_msg.h>

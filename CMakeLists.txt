@@ -29,7 +29,7 @@ generate_messages(
         DEPENDENCIES geometry_msgs std_msgs agile_grasp
 )
 
-add_executable( move_arm_server
+add_executable( moveit_server
         include/move_arm_server.h
         src/move_arm_server.cpp
         )
@@ -40,8 +40,4 @@ include_directories(
     include
 )
 
-target_link_libraries(move_arm_server ${catkin_LIBRARIES} ${Boost_LIBRARIES})
-
-install(DIRECTORY launch DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
-  PATTERN "setup_assistant.launch" EXCLUDE)
-install(DIRECTORY config DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
+target_link_libraries(moveit_server ${catkin_LIBRARIES})
