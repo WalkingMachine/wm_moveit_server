@@ -12,13 +12,44 @@
 
 
 
+bool move_joint( wm_moveit_server::move_jointsRequest &req, wm_moveit_server::move_jointsResponse &resp ) {
+
+    try {
+        moveit::planning_interface::MoveGroupInterface group(req.move_group);
+        bool success = false;
+        group.allowReplanning(true);
+        group.setNumPlanningAttempts(2);
+        moveit::planning_interface::MoveGroupInterface::Plan plan;
+        group.setNamedTarget(req.joint_status_name);
+        int attempt = 1;
+        do {
+            attempt++;
+            if (attempt > 2) {
+                ROS_ERROR("target couldn't be planned");
+                resp.success = 0;
+                return true;
+            }
+        } while (group.plan(plan).val != 1);
+
+        group.execute(plan);
+        resp.success = 1;
+        waitForExecution(group);
+
+        ROS_INFO("Move result: %d", resp.success);
+
+    } catch (__exception ex) {
+        resp.success = 0;
+    }
+    return true;
+
+}
 
 
 bool grasp( wm_moveit_server::pickRequest &req, wm_moveit_server::pickResponse &resp ) {
     moveit::planning_interface::MoveGroupInterface group(req.move_group);
     bool success = false;
-    group.allowReplanning(false);
-    //group.setNumPlanningAttempts(5);
+    group.allowReplanning(true);
+    group.setNumPlanningAttempts(2);
     moveit::planning_interface::MoveGroupInterface::Plan plan;
 
     // call the grasp_selection service
@@ -101,6 +132,7 @@ int main(int argc, char **argv)
 
     ros::ServiceServer serviceMove = nh.advertiseService( "move_arm", move );
     ros::ServiceServer servicePick = nh.advertiseService( "pick", grasp );
+    ros::ServiceServer serviceMoveJoints = nh.advertiseService( "move_joints", move_joint);
     ROS_INFO("Ready to move.");
     //ros::spin();
     while ( ros::ok()){}
