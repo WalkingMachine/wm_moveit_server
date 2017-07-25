@@ -15,6 +15,7 @@
 #include <geometric_shapes/solid_primitive_dims.h>
 #include <wm_moveit_server/move.h>
 #include <wm_moveit_server/pick.h>
+#include <wm_moveit_server/move_joints.h>
 #include <agile_grasp/grasp_hypothesis.h>
 #include <agile_grasp/Grasp.h>
 #include <Eigen/Dense>
@@ -67,6 +68,7 @@ struct GraspEigen
 tf::Quaternion calculateHandOrientations(const GraspEigen& grasp);
 int main(int argc, char **argv);
 bool move( wm_moveit_server::moveRequest &req, wm_moveit_server::moveResponse &resp );
+bool move_joint( wm_moveit_server::move_jointsRequest &req, wm_moveit_server::move_jointsResponse &resp );
 bool grasp( wm_moveit_server::pickRequest &req, wm_moveit_server::pickResponse &resp );
 void waitForExecution( moveit::planning_interface::MoveGroupInterface group );
 

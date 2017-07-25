@@ -1,0 +1,6 @@
+#pose list
+string move_group
+string joint_status_name
+---
+#result
+bool success
