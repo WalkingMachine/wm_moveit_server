@@ -14,7 +14,7 @@
 #include <moveit_planners_ompl/OMPLDynamicReconfigureConfig.h>
 #include <geometric_shapes/solid_primitive_dims.h>
 #include <wm_moveit_server/move.h>
-#include <wm_moveit_server/pick.h>
+//#include <wm_moveit_server/pick.h>
 #include <wm_moveit_server/move_joints.h>
 #include <Eigen/Dense>
 #include <eigen_conversions/eigen_msg.h>

@@ -8,7 +8,6 @@ find_package(catkin REQUIRED COMPONENTS
     moveit_core
     moveit_ros_move_group
     moveit_ros_planning_interface
-    roscpp rospy
     std_msgs
     message_generation
     geometry_msgs
@@ -20,22 +19,40 @@ find_package(catkin REQUIRED COMPONENTS
 
 add_service_files(
         DIRECTORY srv
-        FILES  move.srv pick.srv move_joints.srv
+        FILES  move.srv move_joints.srv #pick.srv
 )
 
 generate_messages(
-        DEPENDENCIES geometry_msgs std_msgs agile_grasp
+        DEPENDENCIES geometry_msgs std_msgs
 )
 
-add_executable( moveit_server
-        include/move_arm_server.h
-        src/move_arm_server.cpp
-        )
-
+catkin_package(
+  INCLUDE_DIRS include
+  CATKIN_DEPENDS std_msgs
+    geometry_msgs
+    roscpp
+    moveit_core
+    moveit_ros_move_group
+    moveit_ros_planning_interface
+    std_msgs
+    geometry_msgs
+    std_srvs
+    tf
+    tf_conversions
+    eigen_conversions
+)
 
 include_directories(
     ${catkin_INCLUDE_DIRS}
     include
 )
 
-target_link_libraries(moveit_server ${catkin_LIBRARIES})
+add_executable( ${PROJECT_NAME}
+        include/move_arm_server.h
+        src/move_arm_server.cpp
+        )
+
+add_dependencies(${PROJECT_NAME} ${catkin_EXPORTED_TARGETS})
+
+## Specify libraries to link a library or executable target against
+target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES})
