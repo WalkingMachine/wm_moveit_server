@@ -24,7 +24,7 @@ add_service_files(
 )
 
 generate_messages(
-        DEPENDENCIES geometry_msgs std_msgs agile_grasp
+        DEPENDENCIES geometry_msgs std_msgs
 )
 
 add_executable( moveit_server
