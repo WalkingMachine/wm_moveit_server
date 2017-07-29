@@ -3,7 +3,7 @@
 <launch>
 
     <!--    start the server   -->
-    <node name="sara_move_arm_server" pkg="wm_moveit_server" type="moveit_server"/>
+    <node name="sara_move_arm_server" pkg="wm_moveit_server" type="wm_moveit_server"/>
     
     
 </launch>
