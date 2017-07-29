@@ -1,0 +1,5 @@
+#pose list
+string move_group
+---
+#result
+geometry_msgs/Pose pose

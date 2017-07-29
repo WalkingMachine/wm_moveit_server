@@ -19,7 +19,7 @@ find_package(catkin REQUIRED COMPONENTS
 
 add_service_files(
         DIRECTORY srv
-        FILES  move.srv move_joints.srv #pick.srv
+        FILES  move.srv move_joints.srv get_pose.srv
 )
 
 generate_messages(

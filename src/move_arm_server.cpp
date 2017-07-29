@@ -9,6 +9,19 @@
 // taken from the grasp selection package
 
 
+bool get_pose( wm_moveit_server::get_poseRequest &req, wm_moveit_server::get_poseResponse &resp ){
+
+    moveit::planning_interface::MoveGroupInterface group(req.move_group);
+    std::string EE = group.getEndEffector();
+
+    geometry_msgs::PoseStamped pose;
+    pose = group.getCurrentPose(EE );
+
+    resp.pose = pose.pose;
+    return true;
+}
+
+
 
 bool move_joint( wm_moveit_server::move_jointsRequest &req, wm_moveit_server::move_jointsResponse &resp ) {
 
@@ -31,7 +44,7 @@ bool move_joint( wm_moveit_server::move_jointsRequest &req, wm_moveit_server::mo
 
         group.execute(plan);
         resp.success = 1;
-        waitForExecution(group);
+        //waitForExecution(group);
 
         ROS_INFO("Move result: %d", resp.success);
 
@@ -92,6 +105,7 @@ int main(int argc, char **argv)
 
     ros::ServiceServer serviceMove = nh.advertiseService( "move_arm", move );
     ros::ServiceServer serviceMoveJoints = nh.advertiseService( "move_joints", move_joint);
+    ros::ServiceServer serviceGetPose = nh.advertiseService( "get_pose", get_pose);
     ROS_INFO("Ready to move.");
     //ros::spin();
     while ( ros::ok()){}
