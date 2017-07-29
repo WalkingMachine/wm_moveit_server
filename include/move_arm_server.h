@@ -16,6 +16,7 @@
 #include <wm_moveit_server/move.h>
 //#include <wm_moveit_server/pick.h>
 #include <wm_moveit_server/move_joints.h>
+#include <wm_moveit_server/get_pose.h>
 #include <Eigen/Dense>
 #include <eigen_conversions/eigen_msg.h>
 #include <tf_conversions/tf_eigen.h>
