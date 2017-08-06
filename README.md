@@ -10,6 +10,9 @@ Simple interface permettant de faire des appels de services à un move_group.
 
 - ### move_joints
   bouge un movegroup à un joint_state prédéfinit.
+  
+- ### get_gose
+  donne la pose actuelle d'un movegroup.
 
 ## dependences
 - [sara_moveit](https://github.com/WalkingMachine/sara_moveit)
